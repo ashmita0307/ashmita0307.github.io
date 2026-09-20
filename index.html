@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ashmita Subramanian</title>
+<meta name="theme-color" content="#16232B">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #16232B;
+    --bg-alt: #1C2B34;
+    --bg-card: #1F303A;
+    --text: #F0EAD9;
+    --text-dim: #A9B7B4;
+    --copper: #C9834C;
+    --copper-bright: #E0A369;
+    --gold: #D4A94C;
+    --line: rgba(240,234,217,0.14);
+    --line-soft: rgba(240,234,217,0.07);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html{ scroll-padding-top: 84px; }
+  *,*::before,*::after{ box-sizing: inherit; }
+  html,body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body{
+    background-image:
+      radial-gradient(ellipse 900px 500px at 85% -5%, rgba(201,131,76,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at -10% 30%, rgba(212,169,76,0.06), transparent 60%);
+    background-attachment: fixed;
+  }
+  a{ color: inherit; }
+  ::selection{ background: var(--copper); color: var(--bg); }
+
+  .wrap{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- nav ---------- */
+  header.top{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: linear-gradient(var(--bg) 78%, transparent);
+  }
+  .navbar{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 18px 28px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mark{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: .02em;
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+  .mark svg{ width: 20px; height: 20px; flex-shrink:0; }
+  nav.links{
+    display: flex;
+    gap: 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  nav.links a{
+    text-decoration: none;
+    color: var(--text-dim);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  nav.links a:hover, nav.links a:focus-visible{
+    color: var(--copper-bright);
+    border-color: var(--copper);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding: 56px 0 40px;
+    position: relative;
+  }
+  .hero h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(38px, 7vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  .hero .role{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--copper-bright);
+    margin: 0 0 22px;
+  }
+  .hero .role .sep{ color: var(--text-dim); margin: 0 8px; }
+  .hero p.lede{
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-dim);
+    max-width: 54ch;
+    margin: 0;
+  }
+
+  .trace{
+    display:block;
+    width:100%;
+    height:auto;
+    margin: 44px 0 6px;
+  }
+
+  /* ---------- sections ---------- */
+  section{
+    padding: 54px 0;
+    border-top: 1px solid var(--line);
+  }
+  section h2{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 28px;
+    margin: 0 0 26px;
+    color: var(--text);
+  }
+
+  /* about */
+  #about p{
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-dim);
+    max-width: 58ch;
+    margin: 0 0 18px;
+  }
+  #about p strong{ color: var(--text); font-weight: 500; }
+
+  .taglist{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 26px 0 22px;
+  }
+  .tag{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--text);
+    background: var(--bg-alt);
+    white-space: nowrap;
+  }
+  .tag.copper{ border-color: rgba(201,131,76,0.45); color: var(--copper-bright); }
+  .tag.gold{ border-color: rgba(212,169,76,0.45); color: var(--gold); }
+
+  .also{
+    font-size: 14.5px;
+    color: var(--text-dim);
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .also .lbl{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    opacity: .7;
+  }
+
+  /* projects */
+  .project{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 26px 26px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .project::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(var(--copper), var(--gold));
+    opacity: .8;
+  }
+  .project-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .project h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 21px;
+    margin: 0;
+  }
+  .project .visit{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--copper-bright);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,131,76,0.4);
+    padding-bottom: 1px;
+    white-space: nowrap;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .project .visit:hover, .project .visit:focus-visible{
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+  .project p{
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-dim);
+    margin: 0;
+    max-width: 56ch;
+  }
+  .project .stack{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+  .project .stack span{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+
+  .more-note{
+    margin-top: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    opacity: .65;
+  }
+
+  /* connect */
+  .connect-list{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .connect-row{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 4px;
+    border-bottom: 1px solid var(--line-soft);
+    text-decoration: none;
+    color: var(--text);
+    transition: padding-left .18s ease, color .18s ease;
+  }
+  .connect-row:last-child{ border-bottom: none; }
+  .connect-row:hover, .connect-row:focus-visible{
+    padding-left: 12px;
+    color: var(--copper-bright);
+  }
+  .connect-row .icon{
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    color: var(--copper);
+  }
+  .connect-row .label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    min-width: 76px;
+  }
+  .connect-row .handle{
+    font-size: 15px;
+    color: var(--text-dim);
+  }
+  .connect-row .arrow{
+    margin-left: auto;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity .18s ease, transform .18s ease;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .connect-row:hover .arrow, .connect-row:focus-visible .arrow{
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  footer{
+    padding: 34px 0 48px;
+    border-top: 1px solid var(--line);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    opacity: .6;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 520px){
+    .wrap{ padding: 0 20px; }
+    .navbar{ padding: 16px 20px 12px; }
+    nav.links{ gap: 14px; }
+    .hero{ padding: 40px 0 28px; }
+    section{ padding: 42px 0; }
+    .project-head{ flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; }
+  }
+
+  a:focus-visible, .connect-row:focus-visible{
+    outline: 2px solid var(--copper-bright);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="navbar">
+    <a class="mark" href="#top">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="5" cy="5" r="2" fill="var(--copper)"/>
+        <circle cx="19" cy="19" r="2" fill="var(--gold)"/>
+        <path d="M5 7V13H12V19H17" stroke="var(--copper)" stroke-width="1.3" fill="none"/>
+        <path d="M12 13H19V17" stroke="var(--gold)" stroke-width="1.3" fill="none"/>
+      </svg>
+      A. Subramanian
+    </a>
+    <nav class="links">
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#connect">connect</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero" style="border-top:none; padding-top: 20px;">
+    <h1>Ashmita Subramanian</h1>
+    <p class="role">Electrical Engineering, 2nd year<span class="sep">·</span>embedded systems &amp; PCB design</p>
+    <p class="lede">I like getting close to the hardware &mdash; tracing signals, laying out boards, and
+      figuring out how a circuit turns into something that actually moves or lights up.</p>
+
+    <svg class="trace" viewBox="0 0 664 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 20H120L140 5H320L340 20H520L540 35H664" stroke="var(--line)" stroke-width="1.5"/>
+      <circle cx="120" cy="20" r="3.5" fill="var(--copper)"/>
+      <circle cx="340" cy="20" r="3.5" fill="var(--gold)"/>
+      <circle cx="540" cy="35" r="3.5" fill="var(--copper)"/>
+    </svg>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>Hi, I'm Ashmita &mdash; a <strong>second-year Electrical Engineering student</strong>. Right now I'm
+      exploring embedded systems, PCB design, and robotics, and I'm always looking to pick up new skills
+      along the way.</p>
+    <p>Outside of circuits, I dance <strong>Bharatanatyam</strong> and spend a lot of my time reading.</p>
+
+    <div class="taglist">
+      <span class="tag copper">Embedded Systems</span>
+      <span class="tag copper">PCB Design</span>
+      <span class="tag copper">Robotics</span>
+    </div>
+    <div class="also">
+      <span class="lbl">also into —</span>
+      <span class="tag gold">Bharatanatyam</span>
+      <span class="tag gold">Reading</span>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>PicoLink</h3>
+        <a class="visit" href="https://github.com/ashmita0307/PicoLink" target="_blank" rel="noopener">view on github ↗</a>
+      </div>
+      <p>VGA graphics driven straight from an RP2040 microcontroller &mdash; generating a video signal
+        entirely in software and pushing it out to a monitor over VGA.</p>
+      <div class="stack">
+        <span>RP2040</span>
+        <span>VGA</span>
+        <span>C</span>
+      </div>
+    </article>
+
+    <p class="more-note">more projects on the way —</p>
+  </section>
+
+  <section id="connect">
+    <h2>Connect</h2>
+    <div class="connect-list">
+      <a class="connect-row" href="https://github.com/ashmita0307" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.42.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .31.21.68.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        <span class="label">github</span>
+        <span class="handle">ashmita0307</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="connect-row" href="https://www.linkedin.com/in/ashmita-subramanian-473a1a414/" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        <span class="label">linkedin</span>
+        <span class="handle">ashmita-subramanian</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ashmita Subramanian</span>
+    <span>built 2026</span>
+  </footer>
+
+</main>
+
+</body>
+</html>
